@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
 
+
 const schema = yup
   .object({
     email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
@@ -28,6 +29,16 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
+  
+
+  // if(isValid === false){
+  //   document.querySelector('Button')?.setAttribute('disabled' , 'disabled');
+  // }
+  // else{
+  //   document.querySelector('Button')?.removeAttribute('disabled');
+  // }
+
+ 
   return (
     <Container>
       <LoginContainer>
@@ -49,7 +60,8 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button title="Entrar" onClick={()=>
+           isValid !== true ? 'disabled' : 'disabled'} />
         </Column>
       </LoginContainer>
     </Container>
